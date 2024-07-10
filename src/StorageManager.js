@@ -43,3 +43,20 @@ export function addNewProject(projectName) {
   saveAllProjects(projects);
   updateIndexes();
 }
+
+export function setCurrentProject(projectIndex) {
+  const projects = getAllProjects();
+  console.log(projects);
+  console.log(projects[projectIndex]);
+  localStorage.setItem("currentProject", JSON.stringify(projects[projectIndex]));
+}
+
+export function getCurrentProject() {
+
+  // If currentProject doesn't exist in local storage set default project as current
+  if(!localStorage.getItem("currentProject")) {
+    setCurrentProject(0);
+  }
+
+  return JSON.parse(localStorage.getItem("currentProject"));
+}
