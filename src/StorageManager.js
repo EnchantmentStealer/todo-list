@@ -34,3 +34,12 @@ export function removeProject(index) {
   saveAllProjects(projects);
   updateIndexes();
 }
+
+export function addNewProject(projectName) {
+  const projects = getAllProjects();
+  const newProject = new Project(projectName);
+  projects.push(newProject);
+
+  saveAllProjects(projects);
+  updateIndexes();
+}
