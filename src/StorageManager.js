@@ -36,9 +36,10 @@ export function removeProject(index) {
   updateIndexes();
 }
 
-export function addNewProject(project) {
+export function addNewProject(projectName) {
   const projects = getAllProjects();
-  projects.push(project);
+  const newProject = new Project(projectName);
+  projects.push(newProject);
   
   saveAllProjects(projects);
   updateIndexes();
