@@ -6,7 +6,8 @@ export function getAllProjects() {
     localStorage.setItem(
       "projects",
       JSON.stringify([new Project("default")])
-    )
+    );
+    updateIndexes();
   }
 
   return JSON.parse(localStorage.getItem("projects"));
@@ -35,28 +36,21 @@ export function removeProject(index) {
   updateIndexes();
 }
 
-export function addNewProject(projectName) {
+export function addNewProject(project) {
   const projects = getAllProjects();
-  const newProject = new Project(projectName);
-  projects.push(newProject);
-
+  projects.push(project);
+  
   saveAllProjects(projects);
   updateIndexes();
 }
 
-export function setCurrentProject(projectIndex) {
-  const projects = getAllProjects();
-  console.log(projects);
-  console.log(projects[projectIndex]);
-  localStorage.setItem("currentProject", JSON.stringify(projects[projectIndex]));
+export function getCurrentProject() {
+  if (!localStorage.getItem("currentProject")) {
+    localStorage.setItem("currentProject", JSON.stringify(0));
+  }
+  return JSON.parse(localStorage.getItem("currentProject"));
 }
 
-export function getCurrentProject() {
-
-  // If currentProject doesn't exist in local storage set default project as current
-  if(!localStorage.getItem("currentProject")) {
-    setCurrentProject(0);
-  }
-
-  return JSON.parse(localStorage.getItem("currentProject"));
+export function setCurrentProject(index) {
+  localStorage.setItem("currentProject", JSON.stringify(index));
 }
