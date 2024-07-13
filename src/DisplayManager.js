@@ -22,7 +22,7 @@ export function getProjectList() {
       renderProjects();
     });
     removeButton.textContent = "Remove";
-    
+
     li.appendChild(removeButton);
     li.appendChild(projectName);
     projectList.appendChild(li);
@@ -57,13 +57,13 @@ export function getTodoList() {
 }
 
 export function renderProjects() {
-  const div = document.getElementById("sidebar");
+  const div = document.getElementById("projects");
   div.innerHTML = '';
   div.appendChild(getProjectList());
 }
 
 export function renderTodoList() {
-  const div = document.getElementById("content");
+  const div = document.getElementById("todoList");
   div.innerHTML = "";
   div.appendChild(getTodoList());
 }
