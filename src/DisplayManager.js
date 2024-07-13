@@ -1,5 +1,5 @@
-import {getAllProjects, getCurrentProject, addNewProject, saveAllProjects, setCurrentProject } from "./StorageManager.js"
-import { addTodoItem } from "./TodoListController.js";
+import {getAllProjects, getCurrentProject, addNewProject, saveAllProjects, setCurrentProject, } from "./StorageManager.js"
+import { addTodoItem, removeTodoItem, updateItemIndexes } from "./TodoListController.js";
 import TodoItem from "./TodoItem.js";
 
 export function getProjectList() {
@@ -26,7 +26,18 @@ export function getTodoList() {
 
   projects[currentProject].todoList.forEach(item => {
     const li = document.createElement("li");
+    const deleteButton = document.createElement("button");
+
+    deleteButton.textContent = "Remove";
+    deleteButton.addEventListener("click", () => {
+      removeTodoItem(projects[currentProject].todoList, item.index);
+      updateItemIndexes(projects[currentProject].todoList);
+      saveAllProjects(projects);
+      renderTodoList();
+    });
+
     li.textContent = item.title;
+    li.appendChild(deleteButton);
     todoList.appendChild(li);
   })
 

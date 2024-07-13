@@ -14,3 +14,9 @@ export function changeItemPriority(list, index) {
     list[index].priority = "high";
   }
 }
+
+export function updateItemIndexes(list) {
+  list.forEach((item, idx) => {
+    item.index = idx;
+  })
+}
