@@ -3,7 +3,7 @@ body {
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 2fr 6fr;
+  grid-template-rows: 1fr 6fr;
   gap: 30px;
 }
 
@@ -17,8 +17,65 @@ body {
   background-color: white;
   grid-area: 1 / 2 / 2 / 3;
   border-radius: 12px;
+  padding: 12px;
 }
 
+.priorityField {
+  display: flex;
+  align-items: center;
+}
+
+.formBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.formBottom .left {
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+#submitButton, #clearButton {
+  font-size: 1em;
+  font-weight: bold;
+  padding: 4px 16px;
+  border: none;
+  border-radius: 6px;
+}
+
+#submitButton {
+  color: white;
+  background-color: rgb(132, 93, 223);
+}
+
+#submitButton:hover {
+  background-color: rgb(97, 68, 165);
+  cursor: pointer;
+}
+
+#clearButton {
+  border: 1px solid grey;
+  background-color: white;
+}
+
+#clearButton:hover {
+  cursor: pointer;
+  background-color: rgb(221, 221, 221);
+}
+
+#newItem {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+input[type="text"], textarea {
+  border-radius: 6px;
+  padding: 8px;
+  border: 1px solid grey;
+}
 #content {
   border: 4px solid white;
   border-radius: 12px;

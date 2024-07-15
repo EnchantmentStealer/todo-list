@@ -16,14 +16,37 @@
     <div id="projects"></div>
     <i class="fa-solid fa-trash"></i>
   </div>
-  
   <div class="todoForm">
     <form id="newItem">
-      <input type="text" name="title">
-      <input type="text" name="description">
-      <input type="date" name="date" id="dateInput">
-      <input type="text" name="priority">
-      <button type="submit">Add</button>
+      <input type="text" name="title" placeholder="Task name">
+      <textarea name="description" id="description" rows="5" placeholder="Description"></textarea>
+
+      <div class="formBottom">
+
+        <div class="left">
+          <div class="dateField">
+            <label for="dateInput">Due date:</label>
+            <input type="date" name="date" id="dateInput">
+          </div>
+          <div class="priorityField">
+            <p>Priority: </p>
+            <div>
+              <input type="radio" id="high" value="high" name="priority" checked>
+              <label for="high">High</label>
+            </div>
+            <div>
+              <input type="radio" id="low" value="low" name="priority">
+              <label for="low">Low</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="right">
+          <input type="reset" value="Clear" id="clearButton">
+          <button type="submit" id="submitButton">Add Task</button>
+        </div>
+
+      </div>
     </form>
   </div>
 
