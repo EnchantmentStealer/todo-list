@@ -1,6 +1,7 @@
 import {getAllProjects, getCurrentProject, addNewProject, saveAllProjects, setCurrentProject, removeProject, updateIndexes } from "./StorageManager.js"
 import { addTodoItem, removeTodoItem, updateItemIndexes } from "./TodoListController.js";
 import TodoItem from "./TodoItem.js";
+import { format, formatDistanceToNow } from "date-fns";
 
 export function getProjectList() {
   const projects = getAllProjects();
@@ -38,7 +39,9 @@ export function getTodoList() {
 
   projects[currentProject].todoList.forEach(item => {
     const li = document.createElement("li");
+    const titleText = document.createElement("span");
     const deleteButton = document.createElement("button");
+    const dueDate = document.createElement("span");
 
     deleteButton.textContent = "Remove";
     deleteButton.addEventListener("click", () => {
@@ -48,7 +51,10 @@ export function getTodoList() {
       renderTodoList();
     });
 
-    li.textContent = item.title;
+    titleText.textContent = item.title;
+    dueDate.textContent = `Due ${formatDistanceToNow(item.dueDate, {addSuffix: true})}`;
+    li.appendChild(titleText);
+    li.appendChild(dueDate);
     li.appendChild(deleteButton);
     todoList.appendChild(li);
   })
@@ -76,6 +82,9 @@ projectForm.addEventListener("submit", e => {
 });
 
 const todoForm = document.getElementById("newItem");
+const dateInput = document.getElementById("dateInput");
+dateInput.setAttribute("min", format(new Date, "yyyy-MM-dd"));
+
 todoForm.addEventListener("submit", e => {
   e.preventDefault();
   const formData = new FormData(e.target);
@@ -84,8 +93,7 @@ todoForm.addEventListener("submit", e => {
     formData.get("description"),
     formData.get("date"),
     formData.get("priority")
-  )
-  console.log(todoItem);
+  );
   const projects = getAllProjects();
   const currentProject = getCurrentProject();
 
