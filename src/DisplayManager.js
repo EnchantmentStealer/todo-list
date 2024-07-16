@@ -1,7 +1,8 @@
 import {getAllProjects, getCurrentProject, addNewProject, saveAllProjects, setCurrentProject, removeProject, updateIndexes } from "./StorageManager.js"
-import { addTodoItem, removeTodoItem, updateItemIndexes } from "./TodoListController.js";
+import { addTodoItem, removeTodoItem, updateItemIndexes, changeItemPriority } from "./TodoListController.js";
 import TodoItem from "./TodoItem.js";
 import { format, formatDistanceToNow } from "date-fns";
+import { createTodoElement, makeCollapsibleElement}from "./TodoElement.js";
 
 export function getProjectList() {
   const projects = getAllProjects();
@@ -39,29 +40,47 @@ export function getTodoList() {
 
   projects[currentProject].todoList.forEach(item => {
     const li = document.createElement("li");
-    const titleText = document.createElement("span");
-    const deleteButton = document.createElement("button");
-    const dueDate = document.createElement("span");
-
-    deleteButton.textContent = "Remove";
-    deleteButton.addEventListener("click", () => {
-      removeTodoItem(projects[currentProject].todoList, item.index);
-      updateItemIndexes(projects[currentProject].todoList);
-      saveAllProjects(projects);
-      renderTodoList();
-    });
-
-    titleText.textContent = item.title;
-    dueDate.textContent = `Due ${formatDistanceToNow(item.dueDate, {addSuffix: true})}`;
-    li.appendChild(titleText);
-    li.appendChild(dueDate);
-    li.appendChild(deleteButton);
+    li.innerHTML = createTodoElement(item);
     todoList.appendChild(li);
   })
-
   return todoList;
 }
 
+function enableStatusButtons() {
+  const currentProject = getCurrentProject();
+  const projects = getAllProjects();
+  const buttons = document.querySelectorAll(".statusToggle");
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      changeItemPriority(projects[currentProject].todoList, button.dataset.index);
+      const collapsible = button.parentElement.parentElement.previousElementSibling;
+      const priorityMarker = collapsible.querySelector(".priorityMarker");
+      if (priorityMarker.dataset.priority === "high") {
+        priorityMarker.dataset.priority = "low";
+      } else {
+        priorityMarker.dataset.priority = "high";
+      }
+
+      saveAllProjects(projects);
+    })
+  })
+}
+
+function enableDeleteButtons() {
+  const currentProject = getCurrentProject();
+  const projects = getAllProjects();
+
+  const buttons = document.querySelectorAll(".removeButton");
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      removeTodoItem(projects[currentProject].todoList, button.dataset.index);
+      updateItemIndexes(projects[currentProject].todoList);
+      saveAllProjects(projects);
+      renderTodoList();
+    })    
+  })
+}
 export function renderProjects() {
   const div = document.getElementById("projects");
   div.innerHTML = '';
@@ -72,6 +91,9 @@ export function renderTodoList() {
   const div = document.getElementById("todoList");
   div.innerHTML = "";
   div.appendChild(getTodoList());
+  enableDeleteButtons();
+  enableStatusButtons();
+  makeCollapsibleElement();
 }
 const projectForm = document.getElementById("newProject");
 projectForm.addEventListener("submit", e => {
