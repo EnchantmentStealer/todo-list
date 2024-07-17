@@ -29,10 +29,10 @@ export function makeCollapsibleElement() {
       element.classList.toggle("active");
 
       const content = element.nextElementSibling;
-      if (content.style.display === "block") {
+      if (content.style.display === "flex") {
         content.style.display = "none";
       } else {
-        content.style.display = "block";
+        content.style.display = "flex";
       }
     })
   })
