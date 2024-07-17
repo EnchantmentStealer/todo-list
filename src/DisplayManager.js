@@ -11,10 +11,13 @@ export function getProjectList() {
   projects.forEach(project => {
     const projectName = document.createElement("p");
     const li = document.createElement("li");
-    const removeButton = document.createElement("button");
-
+    const nameContainer = document.createElement("div");
+    const removeButton = document.createElement("div");
+    removeButton.classList.add("removeProject");
+    nameContainer.classList.add("nameContainer");
+    
     projectName.textContent = project.name;
-    projectName.addEventListener("click", () => {
+    nameContainer.addEventListener("click", () => {
       setCurrentProject(project.index);
       renderTodoList();
     });
@@ -23,10 +26,11 @@ export function getProjectList() {
       removeProject(project.index);
       renderProjects();
     });
-    removeButton.textContent = "Remove";
+    removeButton.innerHTML = "&#128465;";
 
+    nameContainer.appendChild(projectName);
+    li.appendChild(nameContainer);
     li.appendChild(removeButton);
-    li.appendChild(projectName);
     projectList.appendChild(li);
   })
 
