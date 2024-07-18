@@ -1,5 +1,10 @@
 :root {
   --main-purple: #845ddf;
+  --darker-purple: rgb(97, 68, 165);  
+  --main-white: hsl(258, 67%, 93%);
+  --input-white: hsl(258, 67%, 97%);
+  --darker-white: hsl(256, 45%, 86%); 
+  --dark-font: #373D3F;
 }
 
 body {
@@ -13,7 +18,8 @@ body {
 }
 
 #sidebar {
-  background-color: rgb(250, 250, 250);
+  color: var(--main-white);
+  background-color: var(--main-white);
   grid-area: 1 / 1 / 3 / 1; 
   border-radius: 12px;
   padding: 12px;
@@ -23,7 +29,8 @@ body {
 }
 
 .todoForm {
-  background-color: white;
+  color: var(--dark-font);
+  background-color: var(--main-white);
   grid-area: 1 / 2 / 2 / 3;
   border-radius: 12px;
   padding: 12px;
@@ -56,23 +63,24 @@ body {
 }
 
 #submitButton {
-  color: white;
-  background-color: rgb(132, 93, 223);
+  color: var(--main-white);
+  background-color: var(--main-purple);
 }
 
 #submitButton:hover {
-  background-color: rgb(97, 68, 165);
+  background-color: var(--darker-purple);
   cursor: pointer;
 }
 
 #clearButton {
+  color: var(--dark-font);
   border: 1px solid grey;
-  background-color: white;
+  background-color: var(--input-white);
 }
 
 #clearButton:hover {
   cursor: pointer;
-  background-color: rgb(221, 221, 221);
+  background-color: var(--main-white);
 }
 
 #newItem {
@@ -80,7 +88,10 @@ body {
   flex-direction: column;
   gap: 12px;
 }
-input[type="text"], textarea {
+
+input[type="text"], textarea, #dateInput {
+  color: var(--dark-font);
+  background-color: var(--input-white);
   border-radius: 6px;
   padding: 8px;
   border: 1px solid grey;
@@ -88,9 +99,11 @@ input[type="text"], textarea {
 }
 
 #content {
-  border: 4px solid white;
+  border: 4px solid var(--main-white);
   border-radius: 12px;
 }
+
+
 
 #todoList {
   width: 80%;
@@ -117,7 +130,7 @@ ul {
 }
 
 .collapsible {
-  background-color: white;
+  background-color: var(--main-white);
   cursor: pointer;
   padding: 18px;
   display: flex;
@@ -127,7 +140,7 @@ ul {
 }
 
 .collapsible:hover {
-  background-color: #ececec;
+  background-color: var(--darker-white);
 }
 
 .collapsible::after {
@@ -136,20 +149,19 @@ ul {
 }
 
 .active {
-  background-color: #ececec;
+  background-color: var(--darker-white);
 }
 
 .active::after {
   content: "\2796";
 }
 .content {
-  color: white;
-  padding: 16px;
-  display: none;
-  overflow: hidden;
-  background-color: rgb(169, 138, 243);
-  border: 2px solid white;
+  color: var(--dark-font);
+  border: 2px solid var(--main-white);
   border-radius: 18px;
+  padding: 16px;
+  overflow: hidden;
+  display: none;
   flex-direction: column;
 }
 
@@ -158,16 +170,17 @@ ul {
 }
 
 .removeButton, .statusToggle {
-  color: rgb(68, 68, 68);
-  background-color: white;
+  color: var(--dark-font);
+  background-color: var(--main-white);
   font-weight: normal;
   border-radius: 12px;
 }
 
 .removeButton:hover, .statusToggle:hover {
   cursor: pointer;
-  background-color: rgb(238, 238, 238);
+  background-color: var(--darker-white);
 }
+
 .priorityMarker {
   height: 25px;
   width: 25px;
@@ -183,24 +196,22 @@ span[data-priority="low"] {
   background-color: rgb(0, 206, 144);
 }
 
-span {
-  color: rgb(68, 68, 68);
-}
 span.dueDate {
   font-size: 0.9em;
+  color: var(--dark-font);
 }
 
 span.taskName {
   font-weight: bold;
+  color: var(--dark-font);
 }
 
 #sidebar ul li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(132, 93, 223);
+  background-color: var(--main-purple);
   border-radius: 12px;
-  color: white;
   font-weight: bold;
   padding: 4px 10px;
   box-shadow: 2px 4px 8px rgb(153, 153, 153);
@@ -221,10 +232,10 @@ span.taskName {
   gap: 6px;
 }
 #newProjectButton {
-  color: white;
+  color: var(--main-white);
   font-weight: bold;
   font-size: 1.1em;
-  background-color: rgb(132, 93, 223);
+  background-color: var(--main-purple);
   border-radius: 8px;
   border: none;
   padding: 6px 12px;
@@ -232,10 +243,10 @@ span.taskName {
 }
 
 #newProjectButton:hover {
-  background-color: rgb(97, 68, 165);
+  background-color: var(--darker-purple);
   cursor: pointer;
 }
 
 #sidebar ul li.activeProject {
-  background-color: rgb(100, 77, 150);
+  background-color: var(--darker-purple);
 }
