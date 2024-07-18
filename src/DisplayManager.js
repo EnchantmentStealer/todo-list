@@ -11,6 +11,7 @@ export function getProjectList() {
   projects.forEach(project => {
     const projectName = document.createElement("p");
     const li = document.createElement("li");
+    li.classList.add("projectName");
     const nameContainer = document.createElement("div");
     const removeButton = document.createElement("div");
     removeButton.classList.add("removeProject");
@@ -18,6 +19,9 @@ export function getProjectList() {
     
     projectName.textContent = project.name;
     nameContainer.addEventListener("click", () => {
+      const projects = document.querySelectorAll(".projectName");
+      projects.forEach(projectName => projectName.classList.remove("activeProject"));
+      li.classList.add("activeProject");
       setCurrentProject(project.index);
       renderTodoList();
     });

@@ -231,6 +231,6 @@ span.taskName {
   cursor: pointer;
 }
 
-.activeProject {
-  background-color: rgb(97, 68, 165);
+#sidebar ul li.activeProject {
+  background-color: rgb(100, 77, 150);
 }
