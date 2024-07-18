@@ -5,7 +5,7 @@ export function getAllProjects() {
   if (!localStorage.getItem("projects")) {
     localStorage.setItem(
       "projects",
-      JSON.stringify([new Project("default")])
+      JSON.stringify([new Project("Default")])
     );
     updateIndexes();
   }
