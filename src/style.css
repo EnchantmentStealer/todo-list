@@ -124,6 +124,8 @@ ul {
   width: 100%;
 }
 
+/* Todo Item */
+
 .collapsibleElement {
   display: flex;
   flex-direction: column;
@@ -155,8 +157,10 @@ ul {
 .active::after {
   content: "\2796";
 }
+
 .content {
-  color: var(--dark-font);
+  background-color: var(--main-purple);
+  color: var(--main-white);
   border: 2px solid var(--main-white);
   border-radius: 18px;
   padding: 16px;
@@ -169,7 +173,7 @@ ul {
   align-self: flex-end;
 }
 
-.removeButton, .statusToggle {
+.content button {
   color: var(--dark-font);
   background-color: var(--main-white);
   font-weight: normal;
@@ -205,6 +209,7 @@ span.taskName {
   font-weight: bold;
   color: var(--dark-font);
 }
+
 
 #sidebar ul li {
   display: flex;
