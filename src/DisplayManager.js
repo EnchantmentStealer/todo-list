@@ -1,8 +1,8 @@
-import {getAllProjects, getCurrentProject, addNewProject, saveAllProjects, setCurrentProject, removeProject, updateIndexes } from "./StorageManager.js"
+import { getAllProjects, getCurrentProject, addNewProject, saveAllProjects, setCurrentProject, removeProject, updateIndexes } from "./StorageManager.js"
 import { addTodoItem, removeTodoItem, updateItemIndexes, changeItemPriority } from "./TodoListController.js";
 import TodoItem from "./TodoItem.js";
 import { format, formatDistanceToNow } from "date-fns";
-import { createTodoElement, makeCollapsibleElement}from "./TodoElement.js";
+import { createTodoElement, makeCollapsibleElement } from "./TodoElement.js";
 
 export function getProjectList() {
   const projects = getAllProjects();
@@ -16,7 +16,7 @@ export function getProjectList() {
     const removeButton = document.createElement("div");
     removeButton.classList.add("removeProject");
     nameContainer.classList.add("nameContainer");
-    
+
     projectName.textContent = project.name;
     nameContainer.addEventListener("click", () => {
       const projects = document.querySelectorAll(".projectName");
@@ -28,8 +28,13 @@ export function getProjectList() {
 
     removeButton.addEventListener("click", () => {
       removeProject(project.index);
+      setCurrentProject(0);
       renderProjects();
+      const defaultProject = document.querySelectorAll('.projectName')[0];
+      defaultProject.classList.add('activeProject');
+      renderTodoList();
     });
+
     removeButton.innerHTML = "&#128465;";
 
     nameContainer.appendChild(projectName);
@@ -90,7 +95,7 @@ function enableDeleteButtons() {
       updateItemIndexes(projects[currentProject].todoList);
       saveAllProjects(projects);
       renderTodoList();
-    })    
+    })
   })
 }
 export function renderProjects() {
