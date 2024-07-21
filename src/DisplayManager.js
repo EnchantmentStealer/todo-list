@@ -34,7 +34,11 @@ export function getProjectList() {
 
     nameContainer.appendChild(projectName);
     li.appendChild(nameContainer);
-    li.appendChild(removeButton);
+
+    if (project.index > 0) {
+      li.appendChild(removeButton);
+    }
+
     projectList.appendChild(li);
   })
 
