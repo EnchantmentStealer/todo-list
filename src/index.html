@@ -9,7 +9,7 @@
   <div id="sidebar">
 
     <form id="newProject">
-      <input type="text" placeholder="New project" id="projectName" name="projectName">
+      <input type="text" placeholder="New project" id="projectName" name="projectName" required>
       <button type="submit" id="newProjectButton">Add</button>
     </form>
 
@@ -17,15 +17,15 @@
   </div>
   <div class="todoForm">
     <form id="newItem">
-      <input type="text" name="title" placeholder="Task name">
-      <textarea name="description" id="description" rows="5" placeholder="Description"></textarea>
+      <input type="text" name="title" placeholder="Task name" required>
+      <textarea name="description" id="description" rows="5" placeholder="Description" required></textarea>
 
       <div class="formBottom">
 
         <div class="left">
           <div class="dateField">
             <label for="dateInput">Due date:</label>
-            <input type="date" name="date" id="dateInput">
+            <input type="date" name="date" id="dateInput" required>
           </div>
           <div class="priorityField">
             <p>Priority: </p>
