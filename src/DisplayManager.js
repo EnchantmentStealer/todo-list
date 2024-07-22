@@ -117,7 +117,12 @@ projectForm.addEventListener("submit", e => {
   e.preventDefault();
   const formData = new FormData(e.target);
   addNewProject(formData.get("projectName"));
+  setCurrentProject(getAllProjects().length - 1);
   renderProjects();
+  renderTodoList();
+  const allProjects = document.querySelectorAll(".projectName");
+  const addedProject = allProjects[allProjects.length - 1];
+  addedProject.classList.add("activeProject");
 });
 
 const todoForm = document.getElementById("newItem");
