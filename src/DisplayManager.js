@@ -85,12 +85,12 @@ function enableStatusButtons() {
 }
 
 function enableDeleteButtons() {
-  const currentProject = getCurrentProject();
-  const projects = getAllProjects();
-
   const buttons = document.querySelectorAll(".removeButton");
+  
   buttons.forEach(button => {
     button.addEventListener("click", () => {
+      const currentProject = getCurrentProject();
+      const projects = getAllProjects();
       removeTodoItem(projects[currentProject].todoList, button.dataset.index);
       updateItemIndexes(projects[currentProject].todoList);
       saveAllProjects(projects);
