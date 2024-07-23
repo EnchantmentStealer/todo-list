@@ -98,6 +98,11 @@ input[type="text"], textarea, #dateInput {
   box-shadow: 2px 4px 8px rgb(179, 179, 179);
 }
 
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
 #content {
   border: 4px solid var(--main-white);
   border-radius: 12px;
