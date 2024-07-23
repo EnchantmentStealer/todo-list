@@ -102,6 +102,8 @@ export function renderProjects() {
   const div = document.getElementById("projects");
   div.innerHTML = '';
   div.appendChild(getProjectList());
+  const allProjects = document.querySelectorAll(".projectName");
+  allProjects[getCurrentProject()].classList.add("activeProject");
 }
 
 export function renderTodoList() {
