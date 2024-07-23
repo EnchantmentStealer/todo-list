@@ -86,7 +86,7 @@ function enableStatusButtons() {
 
 function enableDeleteButtons() {
   const buttons = document.querySelectorAll(".removeButton");
-  
+
   buttons.forEach(button => {
     button.addEventListener("click", () => {
       const currentProject = getCurrentProject();
@@ -114,6 +114,7 @@ export function renderTodoList() {
   enableStatusButtons();
   makeCollapsibleElement();
 }
+
 const projectForm = document.getElementById("newProject");
 projectForm.addEventListener("submit", e => {
   e.preventDefault();
@@ -125,6 +126,7 @@ projectForm.addEventListener("submit", e => {
   const allProjects = document.querySelectorAll(".projectName");
   const addedProject = allProjects[allProjects.length - 1];
   addedProject.classList.add("activeProject");
+  projectForm.reset();
 });
 
 const todoForm = document.getElementById("newItem");
@@ -146,6 +148,7 @@ todoForm.addEventListener("submit", e => {
   addTodoItem(projects[currentProject].todoList, todoItem);
   saveAllProjects(projects);
   renderTodoList();
+  todoForm.reset();
 })
 
 renderProjects();
