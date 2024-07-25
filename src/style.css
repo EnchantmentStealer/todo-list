@@ -1,4 +1,6 @@
 :root {
+  --border-radius: 12px;
+  --button-border-radius: 8px;
   --main-purple: #845ddf;
   --darker-purple: rgb(97, 68, 165);
   --main-white: hsl(258, 67%, 93%);
@@ -23,7 +25,7 @@ body {
 }
 
 button, #submitButton {
-  border-radius: 8px;
+  border-radius: var(--button-border-radius);
   border: none;
   box-shadow: 2px 4px 8px rgb(158, 158, 158);
   cursor: pointer;
@@ -34,7 +36,7 @@ button, #submitButton {
 
 #sidebar {
   background-color: var(--main-white);
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   color: var(--main-white);
   display: flex;
   flex-direction: column;
@@ -46,7 +48,7 @@ button, #submitButton {
 #sidebar ul li {
   align-items: center;
   background-color: var(--main-purple);
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   box-shadow: 2px 4px 8px rgb(153, 153, 153);
   cursor: pointer;
   display: flex;
@@ -85,7 +87,7 @@ button, #submitButton {
 .todoForm {
   background-color: var(--main-white);
   grid-area: 1 / 2 / 2 / 3;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   padding: 12px;
 }
 
@@ -112,7 +114,7 @@ button, #submitButton {
 .removeButton,
 .statusToggle {
   padding: 4px 16px;
-  border-radius: 6px;
+  border-radius: var(--button-border-radius);
 }
 
 #submitButton {
@@ -145,7 +147,7 @@ textarea,
 #dateInput {
   color: var(--dark-font);
   background-color: var(--input-white);
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   padding: 8px;
   border: 1px solid grey;
   box-shadow: 2px 4px 8px rgb(179, 179, 179);
@@ -158,7 +160,7 @@ textarea {
 
 #content {
   border: 4px solid var(--main-white);
-  border-radius: 12px;
+  border-radius: var(--border-radius);
 }
 
 #todoList {
@@ -194,7 +196,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 18px;
+  border-radius: var(--border-radius);
 }
 
 .collapsible:hover {
@@ -203,7 +205,6 @@ ul {
 
 .collapsible::after {
   content: '\02795';
-  font-size: 13px;
 }
 
 .active {
@@ -218,7 +219,7 @@ ul {
   background-color: var(--main-purple);
   color: var(--main-white);
   border: 2px solid var(--main-white);
-  border-radius: 18px;
+  border-radius: var(--border-radius);
   padding: 16px;
   overflow: hidden;
   display: none;
