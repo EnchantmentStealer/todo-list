@@ -19,6 +19,7 @@ body {
   color: var(--dark-font);
   height: 100vh;
   display: grid;
+  font-family: "Roboto", sans-serif;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr 6fr;
   gap: 30px;
@@ -120,7 +121,7 @@ ul {
 }
 
 .formBottom .left {
-  font-size: 0.8em;
+  font-size: 0.9em;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -149,6 +150,8 @@ input, textarea {
   color: var(--dark-font);
   background-color: var(--input-white);
   border-radius: var(--border-radius);
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9em;
   padding: 8px;
   border: 1px solid grey;
   box-shadow: 2px 4px 8px rgb(179, 179, 179);
